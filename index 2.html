@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Competência · Execução Penal | PJe–SEEU</title>
+<style>
+:root{--navy:#12304d;--blue:#2870b3;--blue2:#3f8ac6;--ink:#26384b;--muted:#718197;--line:#dce6ef;--bg:#f3f6fa;--soft:#f7fafc;--green:#257650;--red:#a43a42;--amber:#98640b}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(145deg,#f5f8fb,#eaf0f6);color:var(--ink);font:16px/1.5 "Segoe UI",Arial,sans-serif}
+header{background:linear-gradient(115deg,#12304d,#215b8c);color:#fff;padding:24px max(22px,calc((100% - 900px)/2));box-shadow:0 8px 25px #16365018}
+.brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.82;font-weight:700}.header-title{font-size:clamp(25px,4vw,34px);font-weight:750;letter-spacing:-.03em;margin:6px 0 2px}.header-sub{font-size:14px;color:#e1ebf5;max-width:650px}
+main{max-width:900px;margin:28px auto;padding:0 16px 44px}.panel{background:#fff;border:1px solid #e0e8f0;border-radius:20px;box-shadow:0 15px 45px #1937500d;padding:clamp(22px,5vw,40px);min-height:430px}
+.progress-top{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;font-weight:650;margin-bottom:9px}.track{height:6px;background:#edf2f6;border-radius:10px;overflow:hidden;margin-bottom:33px}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--blue2));border-radius:10px;transition:width .25s}
+.kicker{color:var(--blue);font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.question{color:var(--navy);font-size:clamp(23px,3.4vw,31px);line-height:1.22;letter-spacing:-.026em;margin:8px 0 11px;max-width:760px}.help{color:#64768a;margin:0 0 25px;max-width:760px;font-size:15px}
+.options{display:grid;gap:11px}.choice{width:100%;display:flex;align-items:center;gap:14px;text-align:left;background:#fff;border:1px solid #d9e3ed;border-radius:13px;padding:16px 17px;color:var(--ink);font:inherit;cursor:pointer;transition:background .14s,border-color .14s,box-shadow .14s,transform .14s}.choice:hover{background:#f7fbff;border-color:#83afd4;box-shadow:0 5px 15px #23537b0e;transform:translateY(-1px)}.choice.selected{background:#f0f7fd;border-color:#3a7fb8;box-shadow:0 0 0 2px #cfe5f7}.choice .dot{width:19px;height:19px;flex:0 0 19px;border:2px solid #9bb0c5;border-radius:50%;position:relative;background:#fff}.choice.selected .dot{border-color:var(--blue)}.choice.selected .dot:after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--blue);left:3px;top:3px}.choice strong{display:block;color:#1e3b58;font-weight:650}.choice small{display:block;color:#78889b;font-size:13px;margin-top:2px;line-height:1.4}
+.notice{margin:18px 0;padding:14px 16px;border-radius:9px;border-left:4px solid var(--amber);background:#fff8e9;color:#674b17}.notice.info{border-left-color:#3679b3;background:#eef6fd;color:#284e73}.notice.success{border-left-color:var(--green);background:#edf8f2;color:#215a41}.notice.danger{border-left-color:var(--red);background:#fff0f1;color:#7e2b32}
+.result-title{font-size:clamp(25px,3.5vw,32px);letter-spacing:-.025em;color:var(--navy);margin:8px 0 14px}.result-box{background:#f8fafc;border:1px solid #e1e9f1;border-radius:13px;padding:19px;margin:17px 0}.result-box h3{color:var(--navy);font-size:17px;margin:0 0 11px}.checklist{list-style:none;padding:0;margin:0}.checklist li{display:flex;gap:10px;margin:11px 0;color:#43566a}.checklist input{width:17px;height:17px;flex:0 0 17px;margin-top:4px;accent-color:var(--green)}.smallprint{font-size:12px;color:#8592a1;margin-top:18px}
+.controls{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:29px;padding-top:19px;border-top:1px solid #edf1f5}.btn{border:0;border-radius:10px;padding:11px 18px;font:600 14px "Segoe UI",Arial,sans-serif;cursor:pointer;transition:.14s}.btn.secondary{background:#edf2f7;color:#38536e}.btn.secondary:hover{background:#e2eaf2}.btn.primary{background:var(--blue);color:#fff;box-shadow:0 4px 11px #2870b326}.btn.primary:hover{background:#1f5d98;transform:translateY(-1px)}.btn:focus-visible,.choice:focus-visible{outline:3px solid #a9cfeb;outline-offset:2px}.btn:disabled{opacity:.38;cursor:not-allowed;transform:none;box-shadow:none}
+.footer{text-align:center;color:#8995a4;font-size:11px;padding-bottom:25px}.pill{display:inline-block;padding:3px 8px;background:#edf5fb;border-radius:20px;color:#2c6492;font-size:11px;font-weight:700;margin-right:5px}
+@media(max-width:620px){header{padding:20px}.panel{border-radius:16px;padding:21px 17px}main{margin:17px auto;padding:0 10px 30px}.track{margin-bottom:26px}.choice{padding:15px 14px}.controls{margin-top:24px}}
+
+.lookup{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;margin-top:8px}
+.lookup input{width:100%;border:1px solid #cfdbe6;border-radius:11px;padding:14px 15px;font:inherit;color:var(--ink);background:#fff}
+.lookup input:focus{outline:3px solid #a9cfeb;outline-offset:1px;border-color:#5d96c2}
+.lookup button{border:0;border-radius:10px;padding:0 20px;background:var(--blue);color:#fff;font:600 14px "Segoe UI",Arial,sans-serif;cursor:pointer}
+.lookup button:hover{background:#1f5d98}
+.lookup-note{font-size:12px;color:var(--muted);margin-top:9px}
+.lookup-result{margin-top:16px}
+@media(max-width:620px){.lookup{grid-template-columns:1fr}.lookup button{padding:12px 18px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">Diretorias de Processamento Remoto</div>
+  <div class="header-title">Competência na Execução Penal</div>
+  <div class="header-sub">Roteiro interativo para identificação do encaminhamento da guia.</div>
+</header>
+<main>
+<section class="panel" aria-live="polite">
+  <div class="progress-top"><span id="stepLabel">Etapa 1</span><span id="progressLabel">Etapa 1</span></div>
+  <div class="track"><div class="bar" id="progressBar"></div></div>
+  <div id="screen"></div>
+  <div class="controls">
+    <button id="backBtn" class="btn secondary" type="button" disabled>← Voltar</button>
+    <button id="restartBtn" class="btn primary" type="button" hidden>Recomeçar</button>
+  </div>
+</section>
+</main>
+<div class="footer">Siga-me · Integração PJe–SEEU</div>
+<script>
+(() => {
+"use strict";
+
+const screen = document.getElementById("screen");
+const backBtn = document.getElementById("backBtn");
+const restartBtn = document.getElementById("restartBtn");
+const progressBar = document.getElementById("progressBar");
+const stepLabel = document.getElementById("stepLabel");
+const progressLabel = document.getElementById("progressLabel");
+
+const courtNames = {
+  "1ª VEP":"1ª Vara Regional de Execuções Penais, Recife",
+  "2ª VEP":"2ª Vara Regional de Execuções Penais, Recife",
+  "3ª VEP":"3ª Vara Regional de Execuções Penais, Caruaru",
+  "4ª VEP":"4ª Vara Regional de Execuções Penais, Petrolina",
+  "VEPEC":"Vara de Execução Penal da Capital, Recife",
+  "VEPA":"Vara de Execução de Penas Alternativas, Recife",
+  "VEPEMA":"Vara de Execução de Penas em Meio Aberto, Recife"
+};
+
+const municipalityToCirc = {
+  "abreu e lima": 1,
+  "camaragibe": 1,
+  "jaboatão dos guararapes": 1,
+  "moreno": 1,
+  "olinda": 1,
+  "paulista": 1,
+  "recife": 1,
+  "são lourenço da mata": 1,
+  "cabo de santo agostinho": 2,
+  "ipojuca": 2,
+  "igarassu": 3,
+  "araçoiaba": 3,
+  "itamaracá": 3,
+  "itapissuma": 3,
+  "fernando de noronha": 3,
+  "chã grande": 4,
+  "glória do goitá": 4,
+  "chã de alegria": 4,
+  "pombos": 4,
+  "vitória de santo antão": 4,
+  "aliança": 5,
+  "buenos aires": 5,
+  "carpina": 5,
+  "lagoa do carro": 5,
+  "condado": 5,
+  "ferreiros": 5,
+  "camutanga": 5,
+  "goiana": 5,
+  "itambé": 5,
+  "itaquitinga": 5,
+  "lagoa de itaenga": 5,
+  "macaparana": 5,
+  "nazaré da mata": 5,
+  "paudalho": 5,
+  "timbaúba": 5,
+  "tracunhaém": 5,
+  "vicência": 5,
+  "água preta": 6,
+  "xexéu": 6,
+  "amaraji": 6,
+  "barreiros": 6,
+  "belém de maria": 6,
+  "catende": 6,
+  "cortês": 6,
+  "escada": 6,
+  "gameleira": 6,
+  "joaquim nabuco": 6,
+  "maraial": 6,
+  "jaqueira": 6,
+  "palmares": 6,
+  "primavera": 6,
+  "quipapá": 6,
+  "são benedito do sul": 6,
+  "ribeirão": 6,
+  "rio formoso": 6,
+  "são josé da coroa grande": 6,
+  "sirinhaém": 6,
+  "tamandaré": 6,
+  "alagoinha": 7,
+  "belo jardim": 7,
+  "bezerros": 7,
+  "brejo da madre de deus": 7,
+  "cachoeirinha": 7,
+  "caruaru": 7,
+  "gravatá": 7,
+  "jataúba": 7,
+  "pesqueira": 7,
+  "poção": 7,
+  "riacho das almas": 7,
+  "sanharó": 7,
+  "são bento do una": 7,
+  "são caetano": 7,
+  "tacaimbó": 7,
+  "agrestina": 8,
+  "altinho": 8,
+  "bonito": 8,
+  "barra de guabiraba": 8,
+  "camocim de são félix": 8,
+  "cupira": 8,
+  "ibirajuba": 8,
+  "lagoa dos gatos": 8,
+  "panelas": 8,
+  "sairé": 8,
+  "são joaquim do monte": 8,
+  "bom jardim": 9,
+  "machados": 9,
+  "cumaru": 9,
+  "feira nova": 9,
+  "joão alfredo": 9,
+  "salgadinho": 9,
+  "limoeiro": 9,
+  "orobó": 9,
+  "passira": 9,
+  "são vicente ferrer": 9,
+  "angelim": 10,
+  "bom conselho": 10,
+  "terezinha": 10,
+  "brejão": 10,
+  "caetés": 10,
+  "calçado": 10,
+  "canhotinho": 10,
+  "capoeiras": 10,
+  "correntes": 10,
+  "garanhuns": 10,
+  "iati": 10,
+  "jupi": 10,
+  "jucati": 10,
+  "jurema": 10,
+  "lagoa do ouro": 10,
+  "lajedo": 10,
+  "palmeirina": 10,
+  "saloá": 10,
+  "paranatama": 10,
+  "são joão": 10,
+  "santa maria do cambucá": 11,
+  "frei miguelinho": 11,
+  "surubim": 11,
+  "casinhas": 11,
+  "vertente do lério": 11,
+  "vertentes": 11,
+  "águas belas": 12,
+  "buíque": 12,
+  "itaíba": 12,
+  "pedra": 12,
+  "tupanatinga": 12,
+  "venturosa": 12,
+  "afogados da ingazeira": 13,
+  "iguaraci": 13,
+  "itapetim": 13,
+  "brejinho": 13,
+  "são josé do egito": 13,
+  "santa terezinha": 13,
+  "tabira": 13,
+  "solidão": 13,
+  "tuparetama": 13,
+  "ingazeira": 13,
+  "arcoverde": 14,
+  "betânia": 14,
+  "custódia": 14,
+  "ibimirim": 14,
+  "inajá": 14,
+  "manari": 14,
+  "sertânia": 14,
+  "mirandiba": 15,
+  "carnaubeira da penha": 15,
+  "parnamirim": 15,
+  "salgueiro": 15,
+  "são josé do belmonte": 15,
+  "serrita": 15,
+  "cedro": 15,
+  "terra nova": 15,
+  "verdejante": 15,
+  "belém de são francisco": 16,
+  "itacuruba": 16,
+  "floresta": 16,
+  "petrolândia": 16,
+  "jatobá": 16,
+  "tacaratu": 16,
+  "araripina": 17,
+  "bodocó": 17,
+  "granito": 17,
+  "exu": 17,
+  "ipubi": 17,
+  "moreilândia": 17,
+  "ouricuri": 17,
+  "santa cruz": 17,
+  "santa filomena": 17,
+  "trindade": 17,
+  "afrânio": 18,
+  "dormentes": 18,
+  "cabrobó": 18,
+  "lagoa grande": 18,
+  "orocó": 18,
+  "petrolina": 18,
+  "santa maria da boa vista": 18,
+  "santa cruz do capibaribe": 19,
+  "taquaritinga do norte": 19,
+  "toritama": 19,
+  "carnaíba": 20,
+  "quixaba": 20,
+  "flores": 20,
+  "calumbi": 20,
+  "serra talhada": 20,
+  "triunfo": 20,
+  "santa cruz da baixa verde": 20,
+};
+
+const units = [
+ {s:"PLL",n:"Presídio Policial Penal Leonardo Lago",c:"Recife",circ:1,closed:"VEPEC"},
+ {s:"PJALLB",n:"Presídio Juiz Antonio Luis Lins de Barros",c:"Recife",circ:1,closed:"VEPEC"},
+ {s:"PFDB",n:"Presídio Frei Damião de Bozzano",c:"Recife",circ:1,closed:"VEPEC"},
+ {s:"CPFR",n:"Colônia Penal Feminina do Recife",c:"Recife",circ:1,closed:"VEPEC"},
+ {s:"CREED",n:"Centro de Reeducação da Polícia Militar de Pernambuco",c:"Abreu e Lima",circ:1,closed:"1ª VEP"},
+ {s:"COTEL",n:"Centro de Observação Criminológica e Triagem Professor Everardo Luna",c:"Abreu e Lima",circ:1,closed:"1ª VEP"},
+ {s:"CPFAL",n:"Colônia Penal Feminina de Abreu e Lima",c:"Abreu e Lima",circ:1,closed:"1ª VEP"},
+ {s:"PI",n:"Presídio de Igarassu",c:"Igarassu",circ:3,closed:"1ª VEP"},
+ {s:"PAISJ",n:"Penitenciária Agroindustrial São João",c:"Ilha de Itamaracá",circ:3},
+ {s:"PVSA",n:"Presídio de Vitória de Santo Antão",c:"Vitória de Santo Antão",circ:4,closed:"2ª VEP"},
+ {s:"PRRL",n:"Presídio Rorenildo da Rocha Leão",c:"Palmares",circ:6,closed:"2ª VEP"},
+ {s:"PIT I",n:"Presídio de Itaquitinga I",c:"Itaquitinga",circ:5,closed:"2ª VEP"},
+ {s:"PIT II",n:"Presídio de Itaquitinga II",c:"Itaquitinga",circ:5,closed:"2ª VEP"},
+ {s:"PTAC",n:"Penitenciária de Tacaimbó",c:"Tacaimbó",circ:7,closed:"3ª VEP"},
+ {s:"PJPS",n:"Penitenciária Juiz Plácido de Souza",c:"Caruaru",circ:7,closed:"3ª VEP"},
+ {s:"PDEPG",n:"Penitenciária Dr. Ênio Pessoa Guerra",c:"Limoeiro",circ:9,closed:"3ª VEP"},
+ {s:"CPFB",n:"Colônia Penal Feminina de Buíque",c:"Buíque",circ:12,closed:"3ª VEP"},
+ {s:"CRA",n:"Centro de Ressocialização do Agreste",c:"Canhotinho",circ:10,closed:"3ª VEP"},
+ {s:"PDAD",n:"Presídio Desembargador Augusto Duque",c:"Pesqueira",circ:7,closed:"3ª VEP"},
+ {s:"PSCC",n:"Presídio de Santa Cruz de Capibaribe",c:"Santa Cruz de Capibaribe",circ:19,closed:"3ª VEP"},
+ {s:"PSAL",n:"Presídio de Salgueiro",c:"Salgueiro",circ:15,closed:"4ª VEP"},
+ {s:"PABA",n:"Presídio Advogado Brito Alves",c:"Arcoverde",circ:14,closed:"4ª VEP"},
+ {s:"PDEG",n:"Penitenciária Dr. Edvaldo Gomes",c:"Petrolina",circ:18,closed:"4ª VEP"},
+ {s:"CPFP",n:"Colônia Penal Feminina de Petrolina",c:"Petrolina",circ:18,closed:"4ª VEP"},
+ {s:"CSP",n:"Centro de Saúde Penitenciário (antigo HCTP) — DESATIVADO",c:"Abreu e Lima",circ:1,closed:"1ª VEP",csp:true}
+];
+
+let gender=null;
+let history=[];
+let currentPage=null;
+
+const commonChecks=[
+ "Conferir a identificação da pessoa condenada e os dados da guia.",
+ "Conferir o regime ou medida, a situação de recolhimento e o endereço considerados.",
+ "Confirmar a Comarca e o Juízo de destino antes de concluir a distribuição."
+];
+
+function page(kicker,question,help,options){
+ currentPage={kicker,question,help,options};
+ stepLabel.textContent=kicker;
+ progressLabel.textContent=`Etapa ${Math.min(history.length+1,6)}`;
+ progressBar.style.width=`${Math.min(95,Math.max(15,(history.length+1)*14))}%`;
+ backBtn.disabled=history.length===0;
+ restartBtn.hidden=true;
+ screen.innerHTML=`<div class="kicker">${kicker}</div><h2 class="question">${question}</h2><p class="help">${help||""}</p><div class="options">${options.map((o,i)=>`<button class="choice" type="button" data-index="${i}"><span class="dot"></span><span><strong>${o.label}</strong>${o.desc?`<small>${o.desc}</small>`:""}</span></button>`).join("")}</div>`;
+ screen.querySelectorAll(".choice").forEach(button=>{
+   button.addEventListener("click",()=>choose(Number(button.dataset.index)),{once:true});
+ });
+}
+
+function choose(index){
+ const selected=currentPage.options[index];
+ if(!selected || typeof selected.action!=="function") return;
+ screen.querySelectorAll(".choice").forEach(b=>b.disabled=true);
+ const clicked=screen.querySelector(`[data-index="${index}"]`);
+ if(clicked) clicked.classList.add("selected");
+ history.push({page:currentPage,gender});
+ setTimeout(()=>selected.action(),90);
+}
+
+function goBack(){
+ if(!history.length)return;
+ const previous=history.pop();
+ gender=previous.gender;
+ page(previous.page.kicker,previous.page.question,previous.page.help,previous.page.options);
+}
+
+function restart(){history=[];gender=null;executionCheck();}
+
+function result(title,body,checks=commonChecks,kind="success"){
+ const cls=kind==="danger"?"danger":kind==="info"?"info":"success";
+ stepLabel.textContent="Orientação final";
+ progressLabel.textContent="Concluído";
+ progressBar.style.width="100%";
+ backBtn.disabled=history.length===0;
+ restartBtn.hidden=false;
+ screen.innerHTML=`<div class="kicker">Orientação final</div><h2 class="result-title">${title}</h2><div class="notice ${cls}">${body}</div>${checks.length?`<div class="result-box"><h3>Checklist</h3><ul class="checklist">${checks.map(c=>`<li><input type="checkbox"><label>${c}</label></li>`).join("")}</ul></div>`:""}<div class="smallprint">Na dúvida, interrompa a distribuição até confirmar a informação necessária.</div>`;
+}
+
+function outcome(court,meio,extra=""){
+ const full=courtNames[court]||"";
+ result("Destino indicado",`Juízo: <strong>${court}</strong>${full?`<br>Nome completo: <strong>${full}</strong>`:""}.<br>Meio: <strong>${meio}</strong>.${extra?`<br><br>${extra}`:""}`);
+}
+
+
+function normalizeText(value){
+ return value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim().replace(/\s+/g," ");
+}
+// Índice sem acentos: permite pesquisar nomes digitados com ou sem sinais diacríticos.
+const normalizedMunicipalityToCirc = Object.fromEntries(
+ Object.entries(municipalityToCirc).map(([name,circ])=>[normalizeText(name),circ])
+);
+const regionByCirc={
+ 1:"Região Metropolitana",2:"Região Metropolitana",3:"Região Metropolitana",
+ 4:"Zona da Mata",5:"Zona da Mata",6:"Zona da Mata",
+ 7:"Agreste",8:"Agreste",9:"Agreste",10:"Agreste",11:"Agreste",12:"Agreste",19:"Agreste",
+ 13:"Sertão",14:"Sertão",15:"Sertão",16:"Sertão",17:"Sertão",18:"Sertão",20:"Sertão"
+};
+function circunscriptionLookup(context, callback){
+ currentPage={kicker:`${context} · Localização`,question:"Qual é a cidade do endereço?",help:"Digite o nome da cidade para identificar a circunscrição judiciária correspondente.",options:[]};
+ stepLabel.textContent=`${context} · Localização`;
+ progressLabel.textContent=`Etapa ${Math.min(history.length+1,6)}`;
+ progressBar.style.width=`${Math.min(95,Math.max(15,(history.length+1)*14))}%`;
+ backBtn.disabled=history.length===0;
+ restartBtn.hidden=true;
+ const datalist=Object.keys(municipalityToCirc).sort((a,b)=>a.localeCompare(b,"pt-BR")).map(c=>`<option value="${c}">`).join("");
+ screen.innerHTML=`
+  <div class="kicker">${context} · Localização</div>
+  <h2 class="question">Qual é a cidade do endereço?</h2>
+  <p class="help">Digite o nome da cidade e pesquise a circunscrição judiciária correspondente.</p>
+  <div class="lookup">
+   <input id="cityInput" list="cityList" autocomplete="off" placeholder="Ex.: Petrolina" aria-label="Nome da cidade">
+   <datalist id="cityList">${datalist}</datalist>
+   <button type="button" id="citySearchBtn">Pesquisar</button>
+  </div>
+  <div class="lookup-note">A busca considera o nome da cidade, com ou sem acentuação.</div>
+  <div id="cityResult" class="lookup-result"></div>`;
+ const input=document.getElementById("cityInput");
+ const btn=document.getElementById("citySearchBtn");
+ function doSearch(){
+  const raw=input.value.trim();
+  const key=normalizeText(raw);
+  const circ=normalizedMunicipalityToCirc[key];
+  const box=document.getElementById("cityResult");
+  if(!key){box.innerHTML='<div class="notice info">Digite o nome da cidade.</div>';return;}
+  if(!circ){box.innerHTML='<div class="notice info">Cidade não localizada. Confira a grafia e tente novamente.</div>';return;}
+  box.innerHTML=`<div class="notice success"><strong>${raw}</strong><br>${circ}ª Circunscrição Judiciária · ${regionByCirc[circ]||""}<div style="margin-top:10px"><button type="button" class="btn primary" id="useCircBtn">Usar esta circunscrição</button></div></div>`;
+  document.getElementById("useCircBtn").addEventListener("click",()=>callback(circ,raw),{once:true});
+ }
+ btn.addEventListener("click",doSearch);
+ input.addEventListener("keydown",e=>{if(e.key==="Enter")doSearch();});
+}
+
+function executionCheck(){
+ page("Etapa 1 · Consulta ao SEEU","Já existe processo de execução penal para esta pessoa?","Faça a consulta no SEEU antes de definir o destino da nova guia.",[
+  {label:"Sim, no TJPE",desc:"Verificar o processo de execução existente e seu status.",action:()=>activeProcess("TJPE")},
+  {label:"Sim, em outro Estado",desc:"O encaminhamento será feito fora da integração PJe–SEEU.",action:()=>activeProcess("OUTRO")},
+  {label:"Não existe execução",desc:"Prosseguir para a identificação e definição do caminho.",action:genderCheck},
+  {label:"Ainda não consegui verificar",desc:"Confirmar essa informação antes de continuar.",action:()=>result("Consulta necessária","Pesquise no SEEU pelo RJI e pelos dados disponíveis. Confira cuidadosamente possíveis homônimos antes de concluir que não existe execução.",["Pesquisar no SEEU pelos dados disponíveis.","Confirmar a identidade da pessoa e o status encontrado.","Retomar o roteiro após a consulta."],"info")}
+ ]);
+}
+
+function activeProcess(where){
+ if(where==="OUTRO"){
+  result("Encaminhamento fora da integração","Se existe execução em outro Estado, após a assinatura, encaminhe a guia ao juízo onde tramita a execução por Malote Digital. A integração PJe–SEEU é utilizada entre comarcas de Pernambuco.",["Confirmar a identidade da pessoa e o processo de execução destinatário.","Assinar a guia.","Encaminhar ao juízo da execução por Malote Digital.","Registrar o encaminhamento conforme o procedimento da unidade."],"info");
+  return;
+ }
+ page("Etapa 2 · Execução existente","Qual é o status do processo de execução encontrado?","A situação do processo define se a nova guia será vinculada ou se deverá ser distribuída novamente.",[ 
+  {label:"Ativo, Suspenso, Em instância superior ou Arquivado provisoriamente",desc:"A execução permanece como destino da nova guia.",action:()=>result("Encaminhar para a execução existente","Utilize a mesma Comarca e o mesmo Juízo em que tramita a execução, por meio da funcionalidade “Remessa ao SEEU”.",["Confirmar a identidade pelo RJI e demais dados.","Conferir o status apresentado no SEEU.","Confirmar a Comarca e o Juízo de destino.","Conferir os dados da guia antes da remessa."],"success")},
+  {label:"Arquivado, Inválido ou outro status que encerre a execução",desc:"Verificar se é caso de nova distribuição.",action:()=>genderCheck()},
+  {label:"Não sei / outro status",desc:"Confirmar o status antes de tomar a decisão.",action:()=>result("Confira o status da execução","Não conclua a vinculação sem identificar o status do processo no SEEU.",["Conferir o status exato.","Se necessário, validar a situação antes de prosseguir."],"info")}
+ ]);
+}
+
+function genderCheck(){
+ page("Etapa 2 · Identificação","Qual opção corresponde à pessoa condenada?","A informação será considerada apenas nos pontos em que interfere no encaminhamento.",[
+  {label:"Homem",action:()=>{gender="m";fulfillment();}},
+  {label:"Mulher",action:()=>{gender="f";fulfillment();}},
+  {label:"Preciso confirmar",desc:"Conferir os dados antes de prosseguir.",action:()=>result("Confirme a identificação","Verifique os dados de identificação nos autos e no cadastro antes de escolher o percurso.",["Conferir os dados da pessoa.","Retomar o roteiro após a confirmação."],"info")}
+ ]);
+}
+
+function fulfillment(){
+ const pessoa=gender==="f"?"mulher":"homem";
+ page(`Etapa 3 · ${pessoa}`,"Onde a pena será cumprida?","Selecione o local definido para o cumprimento da pena.",[
+  {label:"Pernambuco",desc:"Seguir pelas regras de competência das VEPs, unidades prisionais e circunscrições de Pernambuco.",action:regime},
+  {label:"Outro Estado da Federação",desc:"Seguir pelo fluxo de condenação em Pernambuco com cumprimento em outro Estado.",action:outOfStateRegime},
+  {label:"Ainda não está definido",desc:"Confirme o local de cumprimento antes de prosseguir.",action:()=>result("Defina o local de cumprimento","Identifique onde a pena será cumprida antes de continuar a análise.",["Conferir os autos e a situação definida para o cumprimento.","Retomar o roteiro após a confirmação."],"info")}
+ ]);
+}
+
+function regime(){
+ const pessoa=gender==="f"?"Mulher":"Homem";
+ page(`Etapa 4 · ${pessoa}`,"Qual é o regime inicial ou a medida aplicada?","Selecione exatamente a situação indicada na sentença.",[
+  {label:"Regime fechado",action:closed},
+  {label:"Regime semiaberto",action:semi},
+  {label:"Regime aberto",action:openRegime},
+  {label:"Tratamento ambulatorial",action:treatment},
+  {label:"Penas restritivas de direitos",action:prds},
+  {label:"Suspensão condicional da pena",action:sursis},
+  {label:"Outra hipótese / preciso confirmar",action:()=>result("É necessária conferência","Identifique a natureza exata da condenação ou medida antes de definir o destino.",["Conferir a sentença.","Validar a competência aplicável."],"info")}
+ ]);
+}
+
+function outOfStateRegime(){
+ page("Cumprimento em outro Estado","Qual é a pena ou medida aplicada?","O encaminhamento depende do tipo de pena e, nas hipóteses previstas, da região e do sexo.",[ 
+  {label:"Penas restritivas de direitos",action:()=>outcome("VEPA","Meio Aberto")},
+  {label:"Regime aberto, medida de segurança ou suspensão condicional da pena",action:()=>outcome("VEPEMA","Meio Aberto")},
+  {label:"Regime semiaberto",action:outOfStateSemi},
+  {label:"Regime fechado",action:outOfStateClosed},
+  {label:"Outra hipótese / não sei",action:()=>result("É necessária conferência","Não há indicação suficiente para concluir o destino nesta hipótese.",["Conferir a sentença e a competência.","Validar o encaminhamento antes de distribuir."],"info")}
+ ]);
+}
+function outOfStateSemi(){
+ page("Cumprimento em outro Estado · Semiaberto","Em qual região está o juízo criminal que proferiu a condenação?","Considere a circunscrição judiciária do juízo sentenciante.",[
+  {label:"Capital, Região Metropolitana ou Zona da Mata (1ª a 6ª circunscrições)",action:()=>outcome(gender==="f"?"1ª VEP":"VEPEC","Meio Fechado e Semiaberto")},
+  {label:"Agreste (7ª, 8ª, 9ª, 10ª, 11ª, 12ª ou 19ª)",action:()=>outcome("3ª VEP","Meio Fechado e Semiaberto")},
+  {label:"Sertão (13ª, 14ª, 15ª, 16ª, 17ª, 18ª ou 20ª)",action:()=>outcome("4ª VEP","Meio Fechado e Semiaberto")},
+  {label:"Outra região / não sei",action:()=>result("É necessária conferência","Confirme a circunscrição do juízo sentenciante antes de definir o destino.",["Identificar o juízo criminal sentenciante.","Confirmar a circunscrição judiciária."],"info")}
+ ]);
+}
+function outOfStateClosed(){
+ const opts=[];
+ if(gender==="m"){
+  opts.push({label:"Capital ou Região Metropolitana (1ª, 2ª ou 3ª circunscrições)",action:()=>outcome("VEPEC","Meio Fechado e Semiaberto")});
+  opts.push({label:"Zona da Mata (4ª, 5ª ou 6ª circunscrições)",action:()=>outcome("2ª VEP","Meio Fechado e Semiaberto")});
+ }else{
+  opts.push({label:"Capital, Região Metropolitana ou Zona da Mata (1ª a 6ª circunscrições)",action:()=>result("É necessária conferência","Não há indicação expressa para pessoa do sexo feminino nessa hipótese. Não é seguro inferir o juízo de destino.",["Confirmar a competência específica antes de distribuir."],"info")});
+ }
+ opts.push({label:"Agreste (7ª, 8ª, 9ª, 10ª, 11ª, 12ª ou 19ª)",action:()=>outcome("3ª VEP","Meio Fechado e Semiaberto")});
+ opts.push({label:"Sertão (13ª, 14ª, 15ª, 16ª, 17ª, 18ª ou 20ª)",action:()=>outcome("4ª VEP","Meio Fechado e Semiaberto")});
+ opts.push({label:"Outra região / não sei",action:()=>result("É necessária conferência","Confirme a circunscrição do juízo sentenciante antes de definir o destino.",["Identificar o juízo criminal sentenciante.","Confirmar a circunscrição judiciária."],"info")});
+ page("Cumprimento em outro Estado · Fechado","Em qual região está o juízo criminal que proferiu a condenação?","Considere a circunscrição judiciária do juízo sentenciante.",opts);
+}
+
+function closed(){
+ page("Regime fechado","A pessoa está recolhida em estabelecimento prisional de Pernambuco?","Para início do regime fechado, a pessoa sentenciada precisa estar recolhida.",[
+  {label:"Sim, em estabelecimento prisional",action:closedUnit},
+  {label:"Está em prisão domiciliar concedida pelo juízo sentenciante",action:()=>closedDomicile()},
+  {label:"Não está recolhida / situação diferente",action:()=>result("É necessária conferência","Confirme a situação de recolhimento antes de encaminhar.",["Verificar a situação atual nos autos.","Não definir o destino por aproximação."],"info")}
+ ]);
+}
+function closedUnit(){
+ const list=units.filter(u=>u.closed && !u.csp);
+ const opts=list.map(u=>({label:`${u.s} — ${u.n}`,desc:`${u.c} · ${u.circ}ª circunscrição`,action:()=>outcome(u.closed,"Meio Fechado e Semiaberto",`Unidade: ${u.s} — ${u.n}.`)}));
+ opts.push({label:"Cadeia pública",desc:"Selecionar a circunscrição para verificar o encaminhamento.",action:()=>publicJail()});
+ opts.push({label:"Outra unidade / não identificada",action:()=>result("É necessária conferência","Confirme a unidade e a circunscrição antes de distribuir.",["Identificar a unidade prisional.","Confirmar a circunscrição e a competência."],"info")});
+ page("Regime fechado","Em qual unidade prisional a pessoa está recolhida?","Selecione a unidade correspondente ao caso.",opts);
+}
+function publicJail(){
+ page("Regime fechado · Cadeia pública","Qual é a circunscrição da cadeia pública?","A informação precisa ser conferida antes da definição do juízo.",[
+  {label:"1ª, 2ª ou 3ª circunscrição, exceto Recife",action:()=>result("É necessária conferência","Para essa faixa, confirme o enquadramento específico da cadeia pública antes de escolher entre os juízos indicados para a 1ª circunscrição.",["Confirmar a circunscrição exata.","Validar o juízo competente antes da distribuição."],"info")},
+  {label:"4ª, 5ª ou 6ª circunscrição",action:()=>outcome("2ª VEP","Meio Fechado e Semiaberto")},
+  {label:"7ª, 8ª, 9ª, 10ª, 11ª, 12ª ou 19ª circunscrição",action:()=>outcome("3ª VEP","Meio Fechado e Semiaberto")},
+  {label:"13ª, 14ª, 15ª, 16ª, 17ª, 18ª ou 20ª circunscrição",action:()=>outcome("4ª VEP","Meio Fechado e Semiaberto")},
+  {label:"Não sei",action:()=>result("É necessária conferência","Identifique a circunscrição da cadeia pública antes de definir o juízo.",["Confirmar a circunscrição.","Validar o destino antes de distribuir."],"info")}
+ ]);
+}
+function closedDomicile(){
+ page("Regime fechado · Prisão domiciliar","A pessoa já esteve recolhida em unidade prisional?","Se houve recolhimento anterior, considere a última unidade. Caso contrário, será necessário usar a circunscrição do endereço residencial.",[
+  {label:"Sim, já esteve recolhida",action:closedUnit},
+  {label:"Não, nunca esteve recolhida",action:closedResidence},
+  {label:"Não sei",action:()=>result("É necessária conferência","Confirme o histórico de recolhimento antes de definir a referência territorial.",["Verificar se houve recolhimento anterior.","Retomar o roteiro após a confirmação."],"info")}
+ ]);
+}
+function publicJailByCirc(circ,cidade){
+ if(circ>=4&&circ<=6) outcome("2ª VEP","Meio Fechado e Semiaberto",`Município: ${cidade} · ${circ}ª Circunscrição.`);
+ else if([7,8,9,10,11,12,19].includes(circ)) outcome("3ª VEP","Meio Fechado e Semiaberto",`Município: ${cidade} · ${circ}ª Circunscrição.`);
+ else if([13,14,15,16,17,18,20].includes(circ)) outcome("4ª VEP","Meio Fechado e Semiaberto",`Município: ${cidade} · ${circ}ª Circunscrição.`);
+ else result("Circunscrição identificada",`Município: <strong>${cidade}</strong><br>${circ}ª Circunscrição Judiciária · ${regionByCirc[circ]||""}.<br><br>Para esta faixa, confirme o enquadramento específico antes de definir o juízo.`,["Confirmar a situação da cadeia pública.","Validar o juízo competente antes da distribuição."],"info");
+}
+function closedResidenceByCirc(circ,cidade){
+ if(circ>=4&&circ<=6) outcome("2ª VEP","Meio Fechado e Semiaberto",`Município: ${cidade} · ${circ}ª Circunscrição.`);
+ else if([7,8,9,10,11,12,19].includes(circ)) outcome("3ª VEP","Meio Fechado e Semiaberto",`Município: ${cidade} · ${circ}ª Circunscrição.`);
+ else if([13,14,15,16,17,18,20].includes(circ)) outcome("4ª VEP","Meio Fechado e Semiaberto",`Município: ${cidade} · ${circ}ª Circunscrição.`);
+ else result("Circunscrição identificada",`Município: <strong>${cidade}</strong><br>${circ}ª Circunscrição Judiciária · ${regionByCirc[circ]||""}.<br><br>Para esta faixa, confirme o enquadramento específico antes de definir a VEP.`,["Confirmar a circunscrição.","Validar o juízo competente antes da distribuição."],"info");
+}
+function semiByCircLookup(circ,cidade){
+ if(circ<=6) outcome(gender==="f"?"1ª VEP":"VEPEC","Meio Fechado e Semiaberto",`Município: ${cidade} · ${circ}ª Circunscrição.`);
+ else if([7,8,9,10,11,12,19].includes(circ)) outcome("3ª VEP","Meio Fechado e Semiaberto",`Município: ${cidade} · ${circ}ª Circunscrição.`);
+ else if([13,14,15,16,17,18,20].includes(circ)) outcome("4ª VEP","Meio Fechado e Semiaberto",`Município: ${cidade} · ${circ}ª Circunscrição.`);
+ else result("Circunscrição identificada",`Município: <strong>${cidade}</strong><br>${circ}ª Circunscrição Judiciária.`,["Confirmar o enquadramento da situação.","Validar o juízo competente."],"info");
+}
+function treatmentByCircLookup(circ,cidade){
+ outcome(circ<=6?"VEPEMA":"Juízo da comarca de residência do sentenciado","Meio Aberto",`Município: ${cidade} · ${circ}ª Circunscrição.`);
+}
+
+function closedResidence(){
+ page("Regime fechado · Endereço residencial","Qual é a circunscrição do endereço residencial?","Sem recolhimento anterior, a circunscrição do endereço é a referência territorial para definir a VEP. Para a faixa de 1ª a 3ª, confirme o enquadramento específico antes de concluir.",[
+  {label:"1ª, 2ª ou 3ª circunscrição",action:()=>result("É necessária conferência","Confirme o juízo competente para essa faixa antes de distribuir.",["Confirmar a circunscrição.","Validar o juízo competente."],"info")},
+  {label:"4ª, 5ª ou 6ª circunscrição",action:()=>outcome("2ª VEP","Meio Fechado e Semiaberto")},
+  {label:"7ª, 8ª, 9ª, 10ª, 11ª, 12ª ou 19ª circunscrição",action:()=>outcome("3ª VEP","Meio Fechado e Semiaberto")},
+  {label:"13ª, 14ª, 15ª, 16ª, 17ª, 18ª ou 20ª circunscrição",action:()=>outcome("4ª VEP","Meio Fechado e Semiaberto")},
+  {label:"Não sei qual é a circunscrição",desc:"Pesquisar pela cidade do endereço.",action:()=>circunscriptionLookup("Regime fechado · Endereço residencial",(circ,cidade)=>closedResidenceByCirc(circ,cidade))}
+ ]);
+}
+
+function semi(){
+ page("Regime semiaberto","Qual é a situação atual da pessoa condenada?","No regime semiaberto, a pessoa pode estar recolhida ou solta.",[
+  {label:"Recolhida em estabelecimento prisional de Pernambuco",action:semiUnit},
+  {label:"Em prisão domiciliar concedida pelo juízo sentenciante",action:()=>semiDomicile()},
+  {label:"Solta",action:semiResidence},
+  {label:"Situação diferente / não sei",action:()=>result("É necessária conferência","Confirme a situação de recolhimento antes de aplicar a regra.",["Verificar a situação atual nos autos."],"info")}
+ ]);
+}
+function semiUnit(){
+ const opts=units.filter(u=>!u.csp).map(u=>({label:`${u.s} — ${u.n}`,desc:`${u.c} · ${u.circ}ª circunscrição`,action:()=>semiByCirc(u.circ,u.s)}));
+ opts.push({label:"Outra unidade / não identificada",action:()=>result("É necessária conferência","Confirme a unidade e a circunscrição antes de distribuir.",["Identificar a unidade.","Confirmar a circunscrição."],"info")});
+ page("Regime semiaberto","Em qual unidade prisional a pessoa está recolhida?","A circunscrição da unidade define o grupo de encaminhamento; nas 1ª a 6ª circunscrições, o sexo também é considerado.",opts);
+}
+function semiByCirc(circ,sigla=""){
+ if(circ<=6) outcome(gender==="f"?"1ª VEP":"VEPEC","Meio Fechado e Semiaberto",`Unidade: ${sigla}.`);
+ else if([7,8,9,10,11,12,19].includes(circ)) outcome("3ª VEP","Meio Fechado e Semiaberto",`Unidade: ${sigla}.`);
+ else if([13,14,15,16,17,18,20].includes(circ)) outcome("4ª VEP","Meio Fechado e Semiaberto",`Unidade: ${sigla}.`);
+ else result("É necessária conferência","Não foi possível identificar o grupo territorial.",["Confirmar a circunscrição da unidade."],"info");
+}
+function semiDomicile(){
+ page("Regime semiaberto · Prisão domiciliar","A pessoa já esteve recolhida em unidade prisional?","Se houve recolhimento anterior, considere a última unidade. Caso contrário, considere a circunscrição do endereço residencial.",[
+  {label:"Sim, já esteve recolhida",action:semiUnit},
+  {label:"Não, nunca esteve recolhida",action:semiResidence},
+  {label:"Não sei",action:()=>result("É necessária conferência","Confirme o histórico de recolhimento antes de definir a referência territorial.",["Verificar se houve recolhimento anterior."],"info")}
+ ]);
+}
+function semiResidence(){
+ page("Regime semiaberto · Pessoa solta","Qual é a circunscrição do endereço residencial?","Para pessoa solta, considere a circunscrição judiciária do domicílio.",[
+  {label:"1ª, 2ª, 3ª, 4ª, 5ª ou 6ª circunscrição",action:()=>outcome(gender==="f"?"1ª VEP":"VEPEC","Meio Fechado e Semiaberto")},
+  {label:"7ª, 8ª, 9ª, 10ª, 11ª, 12ª ou 19ª",action:()=>outcome("3ª VEP","Meio Fechado e Semiaberto")},
+  {label:"13ª, 14ª, 15ª, 16ª, 17ª, 18ª ou 20ª",action:()=>outcome("4ª VEP","Meio Fechado e Semiaberto")},
+  {label:"Não sei",action:()=>result("É necessária conferência","Identifique a circunscrição do domicílio antes de definir o juízo.",["Confirmar o endereço completo.","Identificar a circunscrição correspondente."],"info")}
+ ]);
+}
+
+function openRegime(){
+ page("Regime aberto","A condenação transitou em julgado?","O trânsito em julgado é necessário para o início desse regime.",[
+  {label:"Sim",action:openAddress},
+  {label:"Não",action:()=>result("Não iniciar este fluxo","A condenação ainda não transitou em julgado.",["Conferir a situação processual."],"danger")},
+  {label:"Não sei",action:()=>result("É necessária conferência","Confirme o trânsito em julgado antes de prosseguir.",["Verificar as certidões e movimentações."],"info")}
+ ]);
+}
+function openAddress(){
+ page("Regime aberto","Onde fica o endereço residencial?","Se a pessoa estiver presa, aplica-se a regra correspondente à unidade prisional.",[
+  {label:"Recife ou Região Metropolitana",action:()=>outcome("VEPEMA","Meio Aberto")},
+  {label:"Caruaru",action:()=>openException("Caruaru","3ª VEP")},
+  {label:"Petrolina",action:()=>openException("Petrolina","4ª VEP")},
+  {label:"Outra comarca, diferente do juízo processante",action:()=>outcome("Juízo da comarca de residência do sentenciado","Meio Aberto")},
+  {label:"A pessoa está presa",action:()=>result("Aplicar a regra correspondente","Distribua de acordo com a unidade prisional em que a pessoa se encontra.",["Identificar a unidade prisional atual.","Conferir a competência correspondente antes de distribuir."],"info")},
+  {label:"Mesma comarca do juízo processante / não sei",action:()=>result("É necessária conferência","Confirme a competência antes de distribuir.",["Confirmar a comarca de residência.","Confirmar a comarca do juízo processante."],"info")}
+ ]);
+}
+function openException(city,vep){
+ page("Regime aberto","A condenação foi proferida por juízo da própria comarca de "+city+"?","Há uma exceção específica para condenações dos próprios juízos de "+city+".",[
+  {label:"Não",action:()=>outcome(vep,"Meio Aberto")},
+  {label:"Sim",action:()=>result("É necessária conferência",`A indicação para ${vep} não se aplica automaticamente às condenações dos juízos de ${city}.`,["Confirmar a competência específica.","Validar o destino antes de distribuir."],"info")},
+  {label:"Não sei",action:()=>result("É necessária conferência","Confirme o juízo sentenciante antes de aplicar a exceção.",["Identificar o juízo criminal sentenciante."],"info")}
+ ]);
+}
+
+function treatment(){
+ page("Tratamento ambulatorial","A pessoa está internada no CSP, em caso residual?","O CSP aparece como hipótese residual e está identificado como desativado.",[
+  {label:"Sim, caso residual",action:()=>outcome("1ª VEP","Meio Fechado e Semiaberto")},
+  {label:"Não",action:treatmentTransit},
+  {label:"Não sei",action:()=>result("É necessária conferência","Confirme se a situação corresponde ao caso residual indicado.",["Verificar a situação de internação nos autos."],"info")}
+ ]);
+}
+function treatmentTransit(){
+ page("Tratamento ambulatorial","A condenação transitou em julgado?","O trânsito em julgado é necessário para o início da medida.",[
+  {label:"Sim",action:treatmentCirc},
+  {label:"Não",action:()=>result("Não iniciar este fluxo","A condenação ainda não transitou em julgado.",["Conferir a situação processual."],"danger")},
+  {label:"Não sei",action:()=>result("É necessária conferência","Confirme o trânsito em julgado antes de prosseguir.",["Verificar certidões e movimentações."],"info")}
+ ]);
+}
+function treatmentCirc(){
+ page("Tratamento ambulatorial","Qual é a circunscrição do endereço residencial?","Use a circunscrição judiciária do domicílio.",[
+  {label:"1ª, 2ª, 3ª, 4ª, 5ª ou 6ª",action:()=>outcome("VEPEMA","Meio Aberto")},
+  {label:"7ª, 8ª, 9ª, 10ª, 11ª, 12ª, 13ª, 14ª, 15ª, 16ª, 17ª, 18ª, 19ª ou 20ª",action:()=>outcome("Juízo da comarca de residência do sentenciado","Meio Aberto")},
+  {label:"Não sei qual é a circunscrição",desc:"Pesquisar pela cidade do endereço.",action:()=>circunscriptionLookup("Tratamento ambulatorial",(circ,cidade)=>treatmentByCircLookup(circ,cidade))}
+ ]);
+}
+
+function prds(){
+ page("Penas restritivas de direitos","A condenação transitou em julgado?","O trânsito em julgado é necessário para o início da execução.",[
+  {label:"Sim",action:prdsAddress},
+  {label:"Não",action:()=>result("Não iniciar este fluxo","A condenação ainda não transitou em julgado.",["Conferir a situação processual."],"danger")},
+  {label:"Não sei",action:()=>result("É necessária conferência","Confirme o trânsito em julgado antes de prosseguir.",["Verificar certidões e movimentações."],"info")}
+ ]);
+}
+function prdsAddress(){
+ page("Penas restritivas de direitos","Onde fica o endereço residencial?","Para outras comarcas, a regra apresentada exige que sejam diferentes do juízo processante.",[
+  {label:"Recife ou Região Metropolitana",action:()=>outcome("VEPA","Meio Aberto")},
+  {label:"Outra comarca, diferente do juízo processante",action:()=>outcome("Juízo da comarca de residência do sentenciado","Meio Aberto")},
+  {label:"Mesma comarca do juízo processante / não sei",action:()=>result("É necessária conferência","Confirme a competência antes de distribuir.",["Confirmar a comarca de residência.","Confirmar a comarca do juízo processante."],"info")}
+ ]);
+}
+
+function sursis(){
+ page("Suspensão condicional da pena","A condenação transitou em julgado?","O trânsito em julgado é necessário para o início da execução.",[
+  {label:"Sim",action:sursisAddress},
+  {label:"Não",action:()=>result("Não iniciar este fluxo","A condenação ainda não transitou em julgado.",["Conferir a situação processual."],"danger")},
+  {label:"Não sei",action:()=>result("É necessária conferência","Confirme o trânsito em julgado antes de prosseguir.",["Verificar certidões e movimentações."],"info")}
+ ]);
+}
+function sursisAddress(){
+ page("Suspensão condicional da pena","Onde fica o endereço residencial?","Para outras comarcas, a regra apresentada exige que sejam diferentes do juízo processante.",[
+  {label:"Recife ou Região Metropolitana",action:()=>outcome("VEPEMA","Meio Aberto")},
+  {label:"Outra comarca, diferente do juízo processante",action:()=>outcome("Juízo da comarca de residência do sentenciado","Meio Aberto")},
+  {label:"Mesma comarca do juízo processante / não sei",action:()=>result("É necessária conferência","Confirme a competência antes de distribuir.",["Confirmar a comarca de residência.","Confirmar a comarca do juízo processante."],"info")}
+ ]);
+}
+
+backBtn.addEventListener("click",goBack);
+restartBtn.addEventListener("click",restart);
+
+// Início direto na primeira pergunta, sem tela introdutória desnecessária.
+executionCheck();
+})();
+</script>
+</body>
+</html>
